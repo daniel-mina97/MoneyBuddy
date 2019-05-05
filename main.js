@@ -11,7 +11,7 @@ function createWindow() {
         }
     });
 
-    mainWindow.loadFile('index.html');
+    mainWindow.loadFile('app/html/index.html');
 
     mainWindow.on('closed', function() {
         mainWindow = null;

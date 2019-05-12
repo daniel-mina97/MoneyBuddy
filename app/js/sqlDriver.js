@@ -37,10 +37,11 @@ class SqlDriver {
     }
 }
 
-function getSqlString(formString) {
+function formatStringForSql(formString) {
     if (formString === '') {
         return 'null';
     }
+    formString = formString.replace(/'/g, "''");
     return `'${formString}'`;
 }
 

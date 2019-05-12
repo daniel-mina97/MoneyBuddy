@@ -1,28 +1,27 @@
 const sqlite3 = require('sqlite3');
 
-function SqlDriver(userDataPath) {
-    this.db = new sqlite3.Database(userDataPath + '/data.db');
+class SqlDriver {
+    constructor(userDataPath) {
+        this.db = new sqlite3.Database(userDataPath + '/data.db');
 
-    this.db.run(`CREATE TABLE IF NOT EXISTS expenses(
-        date TEXT NOT NULL,
-        amount REAL NOT NULL,
-        location TEXT,
-        description TEXT);`);
+        this.db.run(`CREATE TABLE IF NOT EXISTS expenses(
+            date TEXT NOT NULL,
+            amount REAL NOT NULL,
+            location TEXT,
+            description TEXT);`)
+    }
 
-    console.log(this);
-}
+    enterExpense(date, amount, location, description) {
+        date = formatStringForSql(date); // Will never be 'null' as it is required in html form.
+        location = formatStringForSql(location);
+        description = formatStringForSql(description);
 
-SqlDriver.prototype.enterExpense = function(date, amount, location, description) {
-    date = getSqlString(date); // Will never be 'null' as it is required in html form.
-    location = getSqlString(location);
-    description = getSqlString(description);
-
-    this.db.run(`INSERT INTO expenses(date, amount, location, description)
-        VALUES(${date}, ${amount}, ${location}, ${description});`,
-        (e) => {
-            console.log(e);
-        });
-}
+        this.db.run(`INSERT INTO expenses(date, amount, location, description)
+            VALUES(${date}, ${amount}, ${location}, ${description});`,
+            (e) => {
+                console.log(e);
+            });
+    }
 
 SqlDriver.prototype.getExpenses = function() {
     this.db.all(`SELECT *

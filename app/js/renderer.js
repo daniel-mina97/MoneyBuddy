@@ -8,15 +8,15 @@ document.querySelector("h1").addEventListener("click", () => {
     console.log("h1 got clicked.");
 });
 
-document.querySelector("#ipcForm").addEventListener("submit", (event) => {
+document.querySelector("#submit-expense").addEventListener("submit", (event) => {
     event.preventDefault();
     let date = event.target[0].value;
     let amount = event.target[1].value;
     let location = event.target[2].value;
     let description = event.target[3].value;
     sqlDriver.enterExpense(date, amount, location, description);
-    sqlDriver.getExpenses();
-})
+});
+
 document.querySelector("#get-expenses").addEventListener("submit", (event) => {
     event.preventDefault();
     let startDate = event.target[0].value;

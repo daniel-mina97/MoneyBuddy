@@ -17,3 +17,11 @@ document.querySelector("#ipcForm").addEventListener("submit", (event) => {
     sqlDriver.enterExpense(date, amount, location, description);
     sqlDriver.getExpenses();
 })
+document.querySelector("#get-expenses").addEventListener("submit", (event) => {
+    event.preventDefault();
+    let startDate = event.target[0].value;
+    let endDate = event.target[1].value;
+    sqlDriver.getExpenses(startDate, endDate, (rows)=> {
+        console.log(rows);
+    });
+});

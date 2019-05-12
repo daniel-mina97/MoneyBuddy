@@ -23,12 +23,18 @@ class SqlDriver {
             });
     }
 
-SqlDriver.prototype.getExpenses = function() {
-    this.db.all(`SELECT *
-        FROM expenses;`,
-        (err, rows) => {
-            return rows;
-        });
+    getExpenses(startDate, endDate, callback) {
+        startDate = convertDateIfNull(startDate, '0001-01-01');
+        endDate = convertDateIfNull(endDate, '9999-12-31');
+
+        this.db.all(`SELECT *
+            FROM expenses
+            WHERE date BETWEEN ${startDate} AND ${endDate}
+            ORDER BY date;`,
+            (err, rows) => {
+                callback(rows);
+            });
+    }
 }
 
 function getSqlString(formString) {
@@ -36,6 +42,14 @@ function getSqlString(formString) {
         return 'null';
     }
     return `'${formString}'`;
+}
+
+function convertDateIfNull(date, newDate) {
+    date = formatStringForSql(date);
+    if (date === 'null') {
+        date = `'${newDate}'`;
+    } 
+    return date;
 }
 
 module.exports = SqlDriver;

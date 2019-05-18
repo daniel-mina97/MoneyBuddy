@@ -44,40 +44,39 @@
             <div class="modal-background"></div>
             <div class="modal-card">
                 <header class="modal-card-head">
-                <p class="modal-card-title">Enter Expenses</p>
+                <p class="modal-card-title is-large">Enter Expenses</p>
                 </header>
                 <section class="modal-card-body">
                     <form action="#" id="submit-expense">
                         <div class="field"> 
-                            <label class="label">Date of Expense</label>
+                            <label class="label is-medium">Date of Expense</label>
                             <div class="control">
-                                <input type="date" id="form-date-submit" required>
+                                <input class="input" type="date" id="form-date-submit" required>
                             </div>
                         </div>
                         <div class="field">
-                            <label class="label">Amount Spent</label>
+                            <label class="label is-medium">Amount Spent</label>
                             <div class="control">
-                                <input type="number" step="0.01" id="form-expense-amount" min="0.01" placeholder="amount" required>
+                                <input class="input" type="number" step="0.01" id="form-expense-amount" min="0.01" placeholder="amount" required>
                             </div>
                         </div>
                         <div class="field">
-                            <label class="label">Location of Expense</label>
+                            <label class="label is-medium">Location of Expense</label>
                             <div class="control">
-                                <input type="text" id="form-expense-location" placeholder="location">
+                                <input class="input" type="text" id="form-expense-location" placeholder="location">
                             </div>
                         </div>
                         <div class="field">
-                            <label class="label">Description</label>
+                            <label class="label is-medium">Description</label>
                             <div class="control">
-                                <textarea id="form-expense-description"></textarea>
+                                <textarea class="textarea" id="form-expense-description" maxlength="140" rows="3"></textarea>
                             </div>
                         </div>
                         <button type="submit" class="hidden-submit" id="enter-expense-submit-hidden"></button>
                     </form>
                 </section>
                 <footer class="modal-card-foot">
-                <button class="button" id="enter-expense-submit">Submit</button>
-                <button class="button">Cancel</button>
+                <button class="button is-success" id="enter-expense-submit">Submit</button>
                 <button class="button" id="enter-expense-cancel">Cancel</button>
                 </footer>
             </div>
@@ -87,28 +86,29 @@
             <div class="modal-background"></div>
             <div class="modal-card">
                 <header class="modal-card-head">
-                <p class="modal-card-title">View Expenses</p>
+                <p class="modal-card-title is-large">View Expenses</p>
                 </header>
                 <section class="modal-card-body">
                     <form action="#" id="view-expenses">
                         <div class="field">
-                            <label class="label">Start Date</label>
+                            <label class="label">From</label>
                             <div class="control">
-                                <input type="date" id="form-start-date">
+                                <input class="input is-medium" type="date" id="form-start-date">
                             </div>
+                            <p class="help">Not entering a start date will get all expenses from the beginning of time.</p>
                         </div>
                         <div class="field">
-                            <label class="label">End Date</label>
+                            <label class="label">To</label>
                             <div class="control">
-                                <input type="date" id="form-end-date">
+                                <input class="input is-medium" type="date" id="form-end-date">
                             </div>
+                            <p class="help">Not entering an end date will get all expenses to the end of time.</p>
                         </div>
                         <button type="submit" class="hidden-submit" id="view-expenses-submit-hidden"></button>
                     </form>
                 </section>
                 <footer class="modal-card-foot">
                 <button class="button is-success" id="view-expenses-submit">View</button>
-                <button class="button">Cancel</button>
                 <button class="button" id="view-expenses-cancel">Cancel</button>
                 </footer>
             </div>

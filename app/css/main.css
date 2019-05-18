@@ -4,9 +4,16 @@
 
 .hidden-submit {
     display: none;
-}:required {
+}
+
+.side-menu {
+    flex: 0 0 175px;
+}
+
+:required {
     border-left-color: green;
 }
+
 input[type=number]::-webkit-inner-spin-button, 
 input[type=number]::-webkit-outer-spin-button { 
   -webkit-appearance: none; 

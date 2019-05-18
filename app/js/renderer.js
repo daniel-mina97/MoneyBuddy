@@ -32,10 +32,11 @@ document.querySelector("#view-expenses").addEventListener("submit", (event) => {
 });
 
 document.querySelector("#enter-expense-button").addEventListener("click", () => {
+    document.querySelector("#form-date-submit").valueAsDate = new Date();
     document.querySelector("#enter-expense-modal").classList.add("is-active");
 });
 
-document.querySelector("#enter-expense-close").addEventListener("click", () => {
+document.querySelector("#enter-expense-cancel").addEventListener("click", () => {
     document.querySelector("#enter-expense-modal").classList.remove("is-active");
 });
 
@@ -43,6 +44,6 @@ document.querySelector("#view-expenses-button").addEventListener("click", () => 
     document.querySelector("#view-expenses-modal").classList.add("is-active");
 });
 
-document.querySelector("#view-expenses-close").addEventListener("click", () => {
+document.querySelector("#view-expenses-cancel").addEventListener("click", () => {
     document.querySelector("#view-expenses-modal").classList.remove("is-active");
 });
